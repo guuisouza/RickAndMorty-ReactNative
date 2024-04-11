@@ -15,6 +15,7 @@ const Register = () => {
     const handleRegister = () => {
         Alert.alert(
             "Cadastro realizado com sucesso!",
+            "Pressione OK para continuar.",
             [
                 {text:"OK!", onPress: () => {
                         navigation.navigate('login')
@@ -76,14 +77,14 @@ const styles = StyleSheet.create({
     },
     input: {
         borderWidth: 1,
-        borderColor: '#ccc',
+        borderColor: '#2E867F',
         borderRadius: 5,
         padding: 10,
         marginVertical: 10,
         width: '80%',
     },
     button: {
-        backgroundColor: "#3498db",
+        backgroundColor: "#2E867F",
         borderRadius: 5,
         padding: 10,
         width: '80%',
