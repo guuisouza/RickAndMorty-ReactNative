@@ -3,7 +3,7 @@ import {RectButton} from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   flex: 1;
-  padding: 30px;
+  padding: 25px;
 `;
 
 export const Form = styled.View`
@@ -27,7 +27,7 @@ export const Input = styled.TextInput.attrs({
 export const SubmitButton = styled(RectButton)`
   justify-content: center;
   align-items: center;
-  background: #3498db;
+  background: #2E867F;
   margin-left: 10px;
   padding: 0 12px;
   opacity: ${props => (props.loading ? 0.7 : 1)};
@@ -38,55 +38,77 @@ export const List = styled.FlatList`
 `;
 
 export const Card = styled.View`
-  align-items: center;
-  margin: 0 20px 30px;
+  flex-direction: column;
+  background: #fff;
+  margin: 10px 20px 30px;
+  border: 2px solid #2E867F;
+  border-radius: 10px
 `;
 
-export const Image = styled.Image`
-  width: 64px;
-  height: 64px;
-  border-radius: 32px;
-  background: #eee;
+export const ContentContainer = styled.View`
+  flex-direction: row;
+  padding-top: 5px
 `;
+
+export const ImageContainer = styled.View`
+  width: 40%; 
+  height: 100%; 
+  padding: 10px 0 0 10px;
+`
+
+export const Image = styled.Image`
+  flex: 1;
+  width: 100%;
+  height: 100%;
+`;
+
+export const InfoContainer = styled.View`
+  flex: 1;
+  flex-direction: column;
+  background: #fff;
+  padding: 8px;
+`
+export const InfoText = styled.Text`
+  font-size: 14px;
+  color: #35403C;
+`
 
 export const Name = styled.Text`
   font-size: 24px;
-  color: #333;
+  color: #35403C;
   font-weight: bold;
-  margin-top: 4px;
-  text-align: center;
+  margin-bottom: 4px;
 `;
 
 export const Status = styled.Text`
-  font-size: 13px;
-  line-height: 18px;
-  color: #999;
-  margin-top: 5px;
-  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #35403C;
 `;
 
 export const LastLocation = styled.Text`
-  font-size: 13px;
-  line-height: 18px;
-  color: #999;
-  margin-top: 5px;
-  text-align: center;
+  font-size: 14px;
+  font-weight:bold;
+  color: #35403C;
 `
 export const FirstView = styled.Text`
-  font-size: 13px;
-  line-height: 18px;
-  color: #999;
-  margin-top: 5px;
-  text-align: center;
+  font-size: 14px;
+  font-weight:bold;
+  color: #35403C;
+`
+
+export const ButtonContainer = styled.View`
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
 `
 
 export const ProfileButton = styled(RectButton)`
-  margin-top: 10px;
-  align-self: stretch;
-  background: #3498db;
+  background: #2E867F;
   justify-content: center;
   align-items: center;
   height: 36px;
+  margin-bottom: 8px;
 `;
 
 export const ProfileButtonText = styled.Text`

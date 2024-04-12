@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '../services/api';
-import {Keyboard, ActivityIndicator} from 'react-native';
+import { Keyboard, ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
@@ -17,7 +17,12 @@ import {
   FirstView,
   ProfileButton,
   ProfileButtonText,
+  InfoText,
   Card,
+  ImageContainer,
+  InfoContainer,
+  ButtonContainer,
+  ContentContainer,
 } from './styles';
 
 export default class Cards extends Component {
@@ -31,12 +36,12 @@ export default class Cards extends Component {
     const charactersInfo = await AsyncStorage.getItem('characters');
 
     if (charactersInfo) {
-      this.setState({characters: JSON.parse(charactersInfo)});
+      this.setState({ characters: JSON.parse(charactersInfo) });
     }
   }
 
   async componentDidUpdate(_, prevState) {
-    const {characters} = this.state;
+    const { characters } = this.state;
 
     if (prevState.characters !== characters) {
       await AsyncStorage.setItem('characters', JSON.stringify(characters));
@@ -45,8 +50,8 @@ export default class Cards extends Component {
 
   handleAddCharacter = async () => {
     try {
-      const {characters, newCharacter} = this.state;
-      this.setState({loading: true});
+      const { characters, newCharacter } = this.state;
+      this.setState({ loading: true });
 
       // Chamada da API
       const response = await api.get(`/character/?name=${newCharacter}`);
@@ -89,7 +94,7 @@ export default class Cards extends Component {
   };
 
   render() {
-    const {characters, newCharacter, loading} = this.state;
+    const { characters, newCharacter, loading } = this.state;
 
     return (
       <Container>
@@ -99,7 +104,7 @@ export default class Cards extends Component {
             autoCapitalize="none"
             placeholder="Adicionar personagem"
             value={newCharacter}
-            onChangeText={text => this.setState({newCharacter: text})}
+            onChangeText={text => this.setState({ newCharacter: text })}
             returnKeyType="send"
             onSubmitEditing={this.handleAddCharacter}
           />
@@ -116,30 +121,42 @@ export default class Cards extends Component {
           showsVerticalScrollIndicator={false}
           data={characters}
           keyExtractor={characters => characters.name}
-          renderItem={({item}) => (
+          renderItem={({ item }) => (
             <Card>
-              <Image source={{uri: item.image}} />
-              <Name>{item.name}</Name>
-              <Status>{item.status}</Status>
-              <LastLocation>{item.lastLocation}</LastLocation>
-              <FirstView>{item.firtstSeenIn}</FirstView>
-              <ProfileButton
-                onPress={() => {
-                  this.props.navigation.navigate('cardsDetails', {character: item});
-                }}>
-                <ProfileButtonText>Ver detalhes</ProfileButtonText>
-              </ProfileButton>
-              <ProfileButton
-                onPress={() => {
-                  this.setState({
-                    characters: this.state.characters.filter(
-                      character => character.name !== item.name,
-                    ),
-                  });
-                }}
-                style={{backgroundColor: '#FFC0CB'}}>
-                <ProfileButtonText>Excluir</ProfileButtonText>
-              </ProfileButton>
+              <ContentContainer>
+                <ImageContainer>
+                  <Image source={{ uri: item.image }} />
+                </ImageContainer>
+
+                <InfoContainer>
+                  <Name>{item.name}</Name>
+                  <Status>{item.status}</Status>
+                  <InfoText>Última localização conhecida:</InfoText>
+                  <LastLocation>{item.lastLocation}</LastLocation>
+                  <InfoText>Primeira aparição:</InfoText>
+                  <FirstView>Episódio {item.firtstSeenIn}</FirstView>
+                </InfoContainer>
+              </ContentContainer>
+
+              <ButtonContainer>
+                <ProfileButton
+                  onPress={() => {
+                    this.props.navigation.navigate('cardsDetails', { character: item });
+                  }}>
+                  <ProfileButtonText>Ver detalhes</ProfileButtonText>
+                </ProfileButton>
+                <ProfileButton
+                  onPress={() => {
+                    this.setState({
+                      characters: this.state.characters.filter(
+                        character => character.name !== item.name,
+                      ),
+                    });
+                  }}
+                  style={{ backgroundColor: '#FFC0CB' }}>
+                  <ProfileButtonText>Excluir</ProfileButtonText>
+                </ProfileButton>
+              </ButtonContainer>
             </Card>
           )}
         />
