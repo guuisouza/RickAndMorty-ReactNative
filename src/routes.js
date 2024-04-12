@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from './pages/login';
 import Register from './pages/register';
 import Cards from './pages/cards';
+import CardsDetails from './pages/cardsDetails';
 
 const Stack = createStackNavigator();
 
@@ -48,6 +49,21 @@ export default function Routes() {
                     component={Cards}
                     options={{
                         title: 'Rick And Morty CARDS',
+                        headerTitleAlign: 'center',
+                        headerStyle: {
+                            backgroundColor: '#03DBCA',
+                        },
+                        headerTitleStyle: {
+                            fontWeight: 'bold',
+                            color: '#fff',
+                        },
+                    }}
+                />
+                <Stack.Screen
+                    name="cardsDetails"
+                    component={CardsDetails}
+                    options={{
+                        title: 'DETALHES',
                         headerTitleAlign: 'center',
                         headerStyle: {
                             backgroundColor: '#03DBCA',
