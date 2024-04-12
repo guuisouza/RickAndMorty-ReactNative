@@ -144,31 +144,33 @@ export const Author = styled.Text`
   margin-top: 2px;
 `;
 
-export const Header = styled.View`
-  padding-top: 30px;
+// Detalhes
+export const ContainerDetails = styled.View`
+  flex: 1;
+  padding: 25px;
+  flex-direction: column;
+`
+export const DetailImage = styled.View`
+  width: 100%; 
+  height: 60%; 
+  padding: 10px 0 0 10px;
+`
+export const DetailName = styled.Text`
   align-items: center;
-  justify-content: center;
-`;
-
-export const Avatarperfil = styled.Image`
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-  background: #eee;
-`;
-
-export const Nameperfil = styled.Text`
-  font-size: 16px;
-  color: #333;
+  font-size: 24px;
+  color: #35403C;
   font-weight: bold;
-  margin-top: 4px;
-  text-align: center;
+  margin-bottom: 4px;
+`
+
+export const Gender = styled.Text`
+  font-size: 14px;
+  font-weight: bold;
+  color: ${(props) => (props.gender === 'Female' ? '#FF69B4' : props.gender === 'Male' ? '#0000FF' : '#000000')};
 `;
 
-export const Bioperfil = styled.Text`
-  font-size: 15px;
-  line-height: 18px;
-  color: #999;
-  margin-top: 5px;
-  text-align: center;
+export const Origin = styled.Text`
+  font-size: 14px;
+  font-weight: bold;
+  color: #35403C;
 `;

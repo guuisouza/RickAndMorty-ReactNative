@@ -73,7 +73,9 @@ export default class Cards extends Component {
         name: path.name,
         status: path.status,
         lastLocation: path.location.name,
-        firtstSeenIn: path.episode[0].split("/").pop()
+        firtstSeenIn: path.episode[0].split("/").pop(),
+        gender: path.gender, // Será exibido somente nos detalhes
+        origin: path.origin.name, // Será exibido somente nos detalhes
       };
 
       this.setState({
@@ -81,7 +83,6 @@ export default class Cards extends Component {
         newCharacter: '',
         loading: false
       });
-
       Keyboard.dismiss();
     } catch (error) {
       alert("Personagem não encontrado!");
