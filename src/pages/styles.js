@@ -37,12 +37,12 @@ export const List = styled.FlatList`
   margin-top: 20px;
 `;
 
-export const User = styled.View`
+export const Card = styled.View`
   align-items: center;
   margin: 0 20px 30px;
 `;
 
-export const Avatar = styled.Image`
+export const Image = styled.Image`
   width: 64px;
   height: 64px;
   border-radius: 32px;
@@ -50,22 +50,35 @@ export const Avatar = styled.Image`
 `;
 
 export const Name = styled.Text`
-  font-size: 14px;
+  font-size: 24px;
   color: #333;
   font-weight: bold;
   margin-top: 4px;
   text-align: center;
 `;
 
-export const Bio = styled.Text.attrs({
-  numberOfLines: 2,
-})`
+export const Status = styled.Text`
   font-size: 13px;
   line-height: 18px;
   color: #999;
   margin-top: 5px;
   text-align: center;
 `;
+
+export const LastLocation = styled.Text`
+  font-size: 13px;
+  line-height: 18px;
+  color: #999;
+  margin-top: 5px;
+  text-align: center;
+`
+export const FirstView = styled.Text`
+  font-size: 13px;
+  line-height: 18px;
+  color: #999;
+  margin-top: 5px;
+  text-align: center;
+`
 
 export const ProfileButton = styled(RectButton)`
   margin-top: 10px;
@@ -81,21 +94,6 @@ export const ProfileButtonText = styled.Text`
   font-weight: bold;
   color: #fff;
   text-transform: uppercase;
-`;
-
-export const Stars = styled.FlatList.attrs({
-  showsVerticalScrollIndicator: false,
-})`
-  margin-top: 20px;
-`;
-
-export const Starred = styled.View`
-  background: #f5f5f5;
-  border-radius: 4px;
-  padding: 10px 15px;
-  margin-bottom: 20px;
-  flex-direction: row;
-  align-items: center;
 `;
 
 export const OwnerAvatar = styled.Image`

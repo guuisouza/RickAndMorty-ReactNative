@@ -10,12 +10,14 @@ import {
   Input,
   SubmitButton,
   List,
-  User,
-  Avatar,
+  Image,
   Name,
-  Bio,
+  Status,
+  LastLocation,
+  FirstView,
   ProfileButton,
   ProfileButtonText,
+  Card,
 } from './styles';
 
 export default class Cards extends Component {
@@ -36,7 +38,7 @@ export default class Cards extends Component {
   async componentDidUpdate(_, prevState) {
     const {characters} = this.state;
 
-    if (prevState.users !== characters) {
+    if (prevState.characters !== characters) {
       await AsyncStorage.setItem('characters', JSON.stringify(characters));
     }
   }
@@ -46,9 +48,13 @@ export default class Cards extends Component {
       const {characters, newCharacter} = this.state;
       this.setState({loading: true});
 
+      // Chamada da API
       const response = await api.get(`/character/?name=${newCharacter}`);
 
-      if (characters.find(character => character.name === response.data.name)) {
+      // Armazena o caminho para os resultados e seus dados 
+      const path = response.data.results[0]
+
+      if (characters.find(character => character.name === path.name)) {
         alert('Personagem já adicionado!');
         this.setState({
           loading: false,
@@ -57,23 +63,23 @@ export default class Cards extends Component {
         return;
       }
 
-      const data = {
-        image: response.data.image,
-        name: response.data.name,
-        status: response.data.status,
-        lastLocation: response.data.location.name,
-        firtstSeenIn: response.data.episode[0].split("/").pop(),
+      const results = {
+        image: path.image,
+        name: path.name,
+        status: path.status,
+        lastLocation: path.location.name,
+        firtstSeenIn: path.episode[0].split("/").pop()
       };
 
       this.setState({
-        characters: [...characters, data],
+        characters: [...characters, results],
         newCharacter: '',
-        loading: false,
+        loading: false
       });
 
       Keyboard.dismiss();
     } catch (error) {
-      alert('Personagem não encontrado!');
+      alert("Personagem não encontrado!");
       this.setState({
         loading: false,
         newCharacter: '',
@@ -95,9 +101,9 @@ export default class Cards extends Component {
             value={newCharacter}
             onChangeText={text => this.setState({newCharacter: text})}
             returnKeyType="send"
-            onSubmitEditing={this.handleAddUser}
+            onSubmitEditing={this.handleAddCharacter}
           />
-          <SubmitButton loading={loading} onPress={this.handleAddUser}>
+          <SubmitButton loading={loading} onPress={this.handleAddCharacter}>
             {loading ? (
               <ActivityIndicator color="#fff" />
             ) : (
@@ -111,29 +117,30 @@ export default class Cards extends Component {
           data={characters}
           keyExtractor={characters => characters.name}
           renderItem={({item}) => (
-            <User>
-              <Avatar source={{uri: item.avatar}} />
+            <Card>
+              <Image source={{uri: item.image}} />
               <Name>{item.name}</Name>
-              <Bio>{item.bio}</Bio>
-
+              <Status>{item.status}</Status>
+              <LastLocation>{item.lastLocation}</LastLocation>
+              <FirstView>{item.firtstSeenIn}</FirstView>
               <ProfileButton
                 onPress={() => {
-                  this.props.navigation.navigate('user', {user: item});
+                  this.props.navigation.navigate('cardsDetails', {character: item});
                 }}>
-                <ProfileButtonText>Ver perfil</ProfileButtonText>
+                <ProfileButtonText>Ver detalhes</ProfileButtonText>
               </ProfileButton>
               <ProfileButton
                 onPress={() => {
                   this.setState({
-                    users: this.state.users.filter(
-                      user => user.login !== item.login,
+                    characters: this.state.characters.filter(
+                      character => character.name !== item.name,
                     ),
                   });
                 }}
                 style={{backgroundColor: '#FFC0CB'}}>
                 <ProfileButtonText>Excluir</ProfileButtonText>
               </ProfileButton>
-            </User>
+            </Card>
           )}
         />
       </Container>
