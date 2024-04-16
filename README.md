@@ -1,3 +1,12 @@
+# Rick and Morty API - React Native    
+
+## Sobre o repositório  
+Este repositório é destinado ao armazenamento de um projeto que construí para a disciplina de Programação para Dispositivos Móveis I.       
+Consiste em um aplicativo desenvolvido em React Native que ao digitar um nome de personagem na caixa de pesquisa, faz uma busca na API pública da série Rick And Morty e adiciona detalhes dos personagens em formato de cards na tela, sendo possível ver mais detalhes e excluir cards já adicionados.  
+Com este projeto aprendi como trabalhar com o Android Studio utilizando a imagem Tiramisu (Android 13), trabalhar conceitos do react native como navegação entre telas, interação do usuário, tratamento de dados, armazenamento utilizando async storage, criação de componentes e estilização.     
+
+## Como testar o projeto
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
