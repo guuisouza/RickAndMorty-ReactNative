@@ -3,13 +3,11 @@
 ## Sobre o repositório  
 Este repositório é destinado ao armazenamento de um projeto que construí para a disciplina de Programação para Dispositivos Móveis I.       
 Consiste em um aplicativo desenvolvido em React Native que ao digitar um nome de personagem na caixa de pesquisa, faz uma busca na API pública da série Rick And Morty e adiciona detalhes dos personagens em formato de cards na tela, sendo possível ver mais detalhes e excluir cards já adicionados.  
-Com este projeto aprendi como trabalhar com o Android Studio utilizando a imagem Tiramisu (Android 13), trabalhar conceitos do react native como navegação entre telas, interação do usuário, tratamento de dados, armazenamento utilizando async storage, criação de componentes e estilização.     
+Com este projeto aprendi como trabalhar com o Android Studio utilizando a imagem Tiramisu (Android 13), trabalhar conceitos do react native como navegação entre telas, interação do usuário, tratamento de dados, armazenamento utilizando async storage, criação de componentes e estilização, além de manipular pacotes com o node.      
 
-## Como testar o projeto
+# How to test your rick and morty viewer :)
 
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
-
-# Getting Started
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
@@ -22,9 +20,6 @@ To start Metro, run the following command from the _root_ of your React Native p
 ```bash
 # using npm
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
 ## Step 2: Start your Application
@@ -36,42 +31,11 @@ Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _roo
 ```bash
 # using npm
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or shortly provided you have set up your emulator/simulator correctly.
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
 
 # Troubleshooting
 
